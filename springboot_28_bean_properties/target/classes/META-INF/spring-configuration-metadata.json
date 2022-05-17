@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "cartoon",
+      "type": "com.itheima.domain.CartoonProperties",
+      "sourceType": "com.itheima.domain.CartoonProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cartoon.cat",
+      "type": "com.itheima.domain.Cat",
+      "sourceType": "com.itheima.domain.CartoonProperties"
+    },
+    {
+      "name": "cartoon.mouse",
+      "type": "com.itheima.domain.Mouse",
+      "sourceType": "com.itheima.domain.CartoonProperties"
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,105 @@
+Application[10] -> SpringApplication.run(Application.class, args);
+    SpringApplication[824] -> return run(new Class[]{primarySource}, args);
+        SpringApplication[829] -> return (new SpringApplication(primarySources)).run(args);
+            SpringApplication[829] -> SpringApplication(primarySources)
+            # 加载各种配置信息，初始化各种配置对象
+                SpringApplication[101] -> this((ResourceLoader)null, primarySources);
+                    SpringApplication[104] -> public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources);
+                        this.sources = new LinkedHashSet();
+                        this.bannerMode = Mode.CONSOLE;
+                        this.logStartupInfo = true;
+                        this.addCommandLineProperties = true;
+                        this.addConversionService = true;
+                        this.headless = true;
+                        this.registerShutdownHook = true;
+                        this.additionalProfiles = Collections.emptySet();
+                        this.isCustomEnvironment = false;
+                        this.lazyInitialization = false;
+                        this.applicationContextFactory = ApplicationContextFactory.DEFAULT;
+                        this.applicationStartup = ApplicationStartup.DEFAULT;
+                        this.resourceLoader = resourceLoader;
+                        # 将一个参数升级为成员变量，作用就是为了扩大应用范围
+
+                        Assert.notNull(primarySources, "PrimarySources must not be null");
+                        this.primarySources = new LinkedHashSet(Arrays.asList(primarySources));
+                        # Arrays.asList将传进来的可变参数转换为集合，将这些参数存储在一个LinkedHashSet
+                        # 初始化配置类的类名信息（格式转换）
+
+                        this.webApplicationType = WebApplicationType.deduceFromClasspath();
+                        # 确保当前容器加载的类型
+
+                        this.bootstrapRegistryInitializers = this.getBootstrapRegistryInitializersFromSpringFactories();
+                        # 获取系统配置引导信息（信息更为初级）
+
+                        this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
+                        # 获取ApplicationContextInitializer.class的实例对象
+
+                        this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
+                        # 初始化监听器，对初始化过程及运行过程进行干预
+
+                        this.mainApplicationClass = this.deduceMainApplicationClass();
+                        # 初始化了引导类类名信息，备用
+
+            SpringApplication[829] -> new SpringApplication(primarySources).run(args);
+            # 初始化容器，得到ApplicationContext对象
+                SpringApplication[155] -> StopWatch stopWatch = new StopWatch();
+                # 设置计时器
+                SpringApplication[156] -> stopWatch.start();
+                # 计时器开始计时
+                SpringApplication[157] -> DefaultBootstrapContext bootstrapContext = this.createBootstrapContext();
+                # 系统引导信息对应的上下文对象
+                SpringApplication[158] -> ConfigurableApplicationContext context = null;
+                SpringApplication[159] -> this.configureHeadlessProperty();
+                # 模拟输入输出信号，避免出现因缺少外设导致的信号传输失败，进而引发错误
+                SpringApplication[160] -> SpringApplicationRunListeners listeners = this.getRunListeners(args);
+                # 获取当前注册的所有监听器
+                SpringApplication[161] -> listeners.starting(bootstrapContext, this.mainApplicationClass);
+                # 监听器执行了对应的操作步骤
+                SpringApplication[164] -> ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+                # 获取参数
+                SpringApplication[165] -> ConfigurableEnvironment environment = this.prepareEnvironment(listeners, bootstrapContext, applicationArguments);
+                # 将前期读取的数据加载成了一个环境对象，用来描述信息
+                SpringApplication[166] -> this.configureIgnoreBeanInfo(environment);
+                # 做了一个配置，备用
+                SpringApplication[167] -> Banner printedBanner = this.printBanner(environment);
+                # 初始化Logo
+                SpringApplication[168] -> context = this.createApplicationContext();
+                # 创建容器对象，根据当前配置的容器类型进行判定并创建
+                SpringApplication[169] -> context.setApplicationStartup(this.applicationStartup);
+                # 设置启动模式
+                SpringApplication[170] -> this.prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
+                # 对容器进行设置，参数来源于前期的设定
+                SpringApplication[171] -> this.refreshContext(context);
+                # 刷新容器环境
+                SpringApplication[172] -> this.afterRefresh(context, applicationArguments);
+                # 刷新完毕后处理
+                SpringApplication[173] -> stopWatch.stop();
+                # 计时器计时结束
+                SpringApplication[174] -> if (this.logStartupInfo) {
+                                          # 判断是否记录启动时间的日志
+                                            (new StartupInfoLogger(this.mainApplicationClass)).logStarted(this.getApplicationLog(), stopWatch);
+                                            # 创建日志对应的对象，输出日志信息，包含启动时间
+                                          }
+                SpringApplication[178] -> listeners.started(context);
+                # 监听器执行了对应的操作步骤
+                SpringApplication[178] -> this.callRunners(context, applicationArguments);
+                SpringApplication[186] -> listeners.running(context);
+                # 监听器执行了对应的操作步骤
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

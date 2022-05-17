@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db5?serverTimeZone
+      username: root
+      password: 199097
+
+# 使用memcached
+memcached:
+  servers: localhost:11211
+  poolSize: 10
+  opTimeout: 3000
+
+# 使用redis
+#  cache:
+#    type: redis
+#    redis:
+#      cache-null-values: true #是否可以保存空值
+#      key-prefix: sim_ #设置前缀名称
+#      time-to-live: 60  #最大存活时间
+#      use-key-prefix: true #这个一般设置为true，是否保存前缀名称
+#  redis:
+#    host: localhost
+#    port: 6379
+
+# 使用ehcache
+#  cache:
+#    type: ehcache
+#    ehcache:
+#      config: classpath:ehcache.xml
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: tbl_
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 80

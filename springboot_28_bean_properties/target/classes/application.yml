@@ -1,0 +1,11 @@
+cartoon:
+  cat:
+    name: "张霁赫"
+    age: 3
+  mouse:
+    name: "崔明泽"
+    age: 4
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration

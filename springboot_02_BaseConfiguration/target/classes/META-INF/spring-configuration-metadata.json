@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "datasource",
+      "type": "com.itheima.domain.DataSource",
+      "sourceType": "com.itheima.domain.DataSource"
+    }
+  ],
+  "properties": [
+    {
+      "name": "datasource.driver",
+      "type": "java.lang.String",
+      "sourceType": "com.itheima.domain.DataSource"
+    },
+    {
+      "name": "datasource.password",
+      "type": "java.lang.String",
+      "sourceType": "com.itheima.domain.DataSource"
+    },
+    {
+      "name": "datasource.url",
+      "type": "java.lang.String",
+      "sourceType": "com.itheima.domain.DataSource"
+    },
+    {
+      "name": "datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "com.itheima.domain.DataSource"
+    }
+  ],
+  "hints": []
+}

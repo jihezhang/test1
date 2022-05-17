@@ -1,0 +1,9 @@
+servers:
+  port: 8080
+  ipAddress: 192.168.0.1
+  timeout: -1
+  serverTimeout: 3
+  dataSize: 15
+
+datasource:
+  driverClassName: com.mysql.jdbc.Driver

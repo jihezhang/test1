@@ -1,0 +1,21 @@
+
+spring:
+  profiles:
+    active: dev
+    group:
+      "dev": devDB,devMVC
+logging:
+  level:
+    root: info
+    ebank: debug
+#    com.itheima.controller: debug
+
+  group:
+    ebank: com.itheima
+  file:
+    name: server.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: server.%d.%i.log
+      max-file-size: 3KB
+#debug: true

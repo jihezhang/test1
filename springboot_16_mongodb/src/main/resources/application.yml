@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      url: mongodb://localhost/itheima
